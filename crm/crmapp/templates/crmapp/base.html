@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>CRMapp</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'crmapp/base_style.css' %}">
+        {% block extra_css %}
+        {% endblock %}
+    </head>
+    <body>
+        <div class="navbar">
+               <div class="nav-header">
+                   <h1><a href="{% url 'home' %}" > DjangoCRM </a><h1>
+               </div> 
+               <div class="nav-icon">
+                    <a class="nav-home-icon" href="{% url 'home' %}">Home</a>
+                    <a class="nav-register-icon" href="{% url 'register' %}">Register</a>
+                    <a class="nav-login-icon" href="{% url 'login' %}">Login</a>
+                    <a class="nav-logout-icon" href="{% url 'logout' %}">Logout</a>
+
+               </div>
+        </div>
+        <div class="notification">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert">
+                        <strong>{{message}}</strong>
+                        <span class="cls-btn" onclick="this.parentElement.style.display='none';">&times;</span>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        {% block content %}{% endblock  %}
+    </body>
+</html>

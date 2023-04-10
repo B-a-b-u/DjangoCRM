@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% extends 'crmapp/base.html' %}
+        <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        {% load static %}
+        
+        {% block extra_css %}
+        <link rel="stylesheet" href="{% static 'crmapp/register_style.css' %}">
+        {% endblock %} 
+    </head>
+    <body>
+        {% block content %}
+        {% if user.is_authenticated %}
+            <p>You are already logged in</p>
+        {% endif %}
+        <div class="register-form" align="center">
+            <form action="" method = "POST">
+                {% csrf_token %}
+
+                {{form.as_p}}
+                {% comment %} <label for="firstname" required>FirstName</label>
+                <input type="text" name = "firstname">
+                <label for="password"  required>Password</label>
+                <input type="password" name="password"> {% endcomment %}
+                <button type="submit" >Login</button>
+            </form>
+        
+        </div>
+        {% endblock %}
+        
+        
+    </body>
+</html>

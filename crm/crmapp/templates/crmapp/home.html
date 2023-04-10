@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    {% extends 'crmapp/base.html' %}
+    <head>
+    </head>
+    {% load static %} 
+    {% block extra_css %}
+    <link rel="stylesheet" href="{% static 'crmapp/home_style.css' %}">
+    {% endblock extra_css %}
+    
+    <body>
+        {% block content %}
+        <h1>Posts</h1>
+        <br><br>
+        {% if posts %}
+            {% for post in posts %}
+                <ul>
+<!--                    <li>{{post.user_name}}</li>-->
+<!--                    <li>{{post.caption}}</li>-->
+<!--                    <li>{{post.content}}</li>-->
+                        <li><a href="{% url 'individual_post' post.id %}">{{post.caption}}</a></li>
+                        <li>{{post.created}}</li>
+                </ul>
+            {% endfor %}
+        {% endif %}
+        <button><a href="{% url 'add_post' %}">Add post</a></button>
+        {% endblock content %}
+
+
+        
+    </body>
+</html>

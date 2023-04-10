@@ -1,0 +1,34 @@
+{% extends 'crmapp/base.html' %}
+{% block content %}
+<div class="new-post">
+    <h1 class="new-post-header">New Post</h1>
+    <div new-post-form>
+        {% if user.is_authenticated %}
+            <form action="{% url 'update_post' current_post.id %}" method="POST">
+                {% csrf_token %}
+                <br><br>
+
+                <label for="username">UserName</label>
+                <input type="text" name="username" value="{{current_post.user_name}}">
+                <br><br>
+
+                <label for="email">Email</label>
+                <input type="email" name="email" value="{{current_post.email}}">
+                <br><br>
+
+                <label for="caption">Caption</label>
+                <input type="text" name="caption" value="{{current_post.caption}}">
+                <br><br>
+
+                <label for="content">Content</label>
+                <br>
+                <textarea name="content" >{{current_post.content}}</textarea>
+                <br><br>
+
+                <button type="submit">Post</button>
+                <button type="reset">Reset</button>
+        </form>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

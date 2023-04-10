@@ -1,0 +1,18 @@
+{% extends "crmapp/base.html" %}
+{% block content %}
+    {% if user_post %}
+            <div class="user-post" align="center">
+                <br><br>
+                <strong>UserName :</strong><pre>   <i>{{user_post.user_name}}</i><br></pre>
+                <strong>Posted on :</strong><pre>   <i>{{user_post.created}}</i><br></pre>
+                <strong>Contact :</strong><pre>   {{user_post.email}}</strong><br></pre>
+                <strong>Caption :</strong><pre>   {{user_post.caption}}</strong><br></pre>
+                <strong>Post : </strong><br>{{user_post.content}}</p><br>
+                <br><br>
+
+            </div>
+            <button><a href="{% url 'home' %}">Go back</a></button>
+            <button align="right"><a href="{% url 'delete_post' user_post.id %}">Delete</a></button>
+            <button align="right"><a href="{% url 'update_post' user_post.id %}">Update</a></button>
+    {% endif %}
+{% endblock %}
