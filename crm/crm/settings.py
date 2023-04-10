@@ -74,12 +74,13 @@ WSGI_APPLICATION = 'crm.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# Connecting postgres
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': "postgres",
-        "USER" : "postgres",
-        "PASSWORD" : "212212003",
+        'NAME': "Database-Name",
+        "USER" : "UserName",
+        "PASSWORD" : "Password",
         "HOST" : "localhost",
         "PORT" : "5432",
     }
